@@ -103,15 +103,24 @@ public class TicTacToe {
         while (INvalidLoc) {
             System.out.println("What row?");
             String rowStr = System.console().readLine();
-            int rowInt = Integer.parseInt(rowStr);
             
             System.out.println("What column?");
             String colStr = System.console().readLine();
-            int colInt = Integer.parseInt(colStr);
+            // check that they put a number before parseInt
 
-            if (board[rowInt][colInt] == '-') {
-                board[rowInt][colInt] = 'x';
-                INvalidLoc = false;
+            int rowInt;
+            int colInt;
+            try {
+                rowInt = Integer.parseInt(rowStr);
+                colInt = Integer.parseInt(colStr);
+
+                if (rowInt >= 0 && rowInt < board.length && colInt >= 0 && colInt < board.length && board[rowInt][colInt] == '-') {
+                    board[rowInt][colInt] = 'x';
+                    INvalidLoc = false;
+                }
+
+            } catch (NumberFormatException e) {
+                INvalidLoc = true;
             }
         }
     }
