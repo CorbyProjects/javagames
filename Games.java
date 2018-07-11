@@ -12,19 +12,19 @@ public class Games {
        
         while (HowManyRounds > 0) {
             // figure out what game they want to play for this round
-            System.out.println("Would you like to play a game?\nChoose one: Guess A Number, Tic Tac Toe, Mazes and Monsters");
+            System.out.println("Would you like to play a game?\nChoose one:\n1) Guess A Number\n2) Tic Tac Toe\n3) Mazes and Monsters");
             String game = System.console().readLine();
             // confirm game choice
             game = game.toLowerCase();
             System.out.println("You chose: " + game);
             // start up the game they chose
-            if (game.equals("guess a number")) {
+            if (game.equals("1") || game.equals("guess a number")) {
                GuessANumber currentGame = new GuessANumber();
                int user = currentGame.GetUserNumber();
                int comp = currentGame.GetCompNumber();
                currentGame.TestNums(user, comp);
             } 
-            else if (game.equals("tic tac toe")) {
+            else if (game.equals("2") || game.equals("tic tac toe")) {
                 TicTacToe currentGame = new TicTacToe();
                 // draw board
                 // game play loop
@@ -43,7 +43,7 @@ public class Games {
                     }
                 }
             }
-            else if (game.equals("mazes and monsters")) {
+            else if (game.equals("3") || game.equals("mazes and monsters")) {
                 MnM currentGame = new MnM();
             }
             else { // otherwise let them know it doesn't exist yet
