@@ -1,10 +1,15 @@
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Random;
 
 public class Monster {
     int hitPoints, charisma, intelligence, dexterity, constitution, strength, wisdom; 
     String currentMonster;
-    String[] possibleMonsters = {"Dalek", "Doll", "Dragon", "Gru", "Kobold", "Lich", "Marching Band", "Mirror", "Orc", "Rats of Unusual Size", "Siren", "Troll", "Vampire", "Weeping Angel"};
+    /* String[] possibleMonsters = {"Dalek", "Doll", "Dragon", "Kobold", "Lich", "Marching Band", "Mirror", "Orc", "Rodents of Unusual Size", "Siren", "Troll", "Vampire", "Vardigg", "Weeping Angel"};
+    */
+    String[] possibleMonsters = {"Dalek", "Doll", "Dragon", "Kobold", "Lich", "Mirror", "Siren", "Vardigg"};
 
     public Monster (int baseLevelArg) {
         // randomly choose a monster from array
@@ -35,6 +40,20 @@ public class Monster {
     public void displayMonsterStats () {
         // describe monster to user
         // load description from file
+
+        try {
+            String filePath = new File("").getAbsolutePath();
+            BufferedReader reader = new BufferedReader(new FileReader(filePath + "/monsters/" + currentMonster + ".txt"));
+
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            reader.close();
+        } catch (IOException x) {
+            x.printStackTrace();
+        }
         
         System.out.println("Hit Points: " + hitPoints + "\nCharisma: " + charisma + "\nIntelligence: " + intelligence + "\nDexterity: " + dexterity + "\nConstitution: " + constitution + "\nStrength: " + strength + "\nWisdom: " + wisdom);
     }
