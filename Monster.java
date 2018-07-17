@@ -7,9 +7,7 @@ import java.util.Random;
 public class Monster {
     int hitPoints, charisma, intelligence, dexterity, constitution, strength, wisdom; 
     String currentMonster;
-    /* String[] possibleMonsters = {"Dalek", "Doll", "Dragon", "Kobold", "Lich", "Marching Band", "Mirror", "Orc", "Rodents of Unusual Size", "Siren", "Troll", "Vampire", "Vardigg", "Weeping Angel"};
-    */
-    String[] possibleMonsters = {"Dalek", "Doll", "Dragon", "Kobold", "Lich", "Mirror", "Siren", "Vardigg"};
+    String[] possibleMonsters = {"Dalek", "Doll", "Dragon", "Kobold", "Lich", "Marching Band", "Mirror", "Orc", "Rodents of Unusual Size", "Siren", "Troll", "Vampire", "Vardigg", "Weeping Angel"};
 
     public Monster (int baseLevelArg) {
         // randomly choose a monster from array
