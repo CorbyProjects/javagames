@@ -6,16 +6,20 @@ public class MnM {
     PlayerChar player;
     Monster monster;
     boolean roomKey;
+	boolean playerAlive;
+	boolean monsterAlive;
 
-    
     public MnM () {
         System.out.println("******************************************************************************************\n    __  ___                         ___        __  ___                 __                \n   /  |/  /___ _____  ___  _____   ( _ )      /  |/  /___  ____  _____/ /____  __________\n  / /|_/ / __ `/_  / / _ \\/ ___/  / __ \\/|   / /|_/ / __ \\/ __ \\/ ___/ __/ _ \\/ ___/ ___/\n / /  / / /_/ / / /_/  __(__  )  / /_/  <   / /  / / /_/ / / / (__  ) /_/  __/ /  (__  ) \n/_/  /_/\\__,_/ /___/\\___/____/   \\____/\\/  /_/  /_/\\____/_/ /_/____/\\__/\\___/_/  /____/  \n******************************************************************************************");
+		// you start off alive 
+		playerAlive = true;
         // figure out base level for game()
         setBaseLevel();
         // initialize player character()
         player = new PlayerChar(baseLevel);
-        // initialize 1st room()
-        initializeRoom();
+		
+		// as long as you're alive, keep taking turns
+		mainTurnLoop();
     }
 
     // figure out base level for game()
@@ -39,43 +43,77 @@ public class MnM {
         }
     }
     
-    // initialize room
+	// initialize room
     public void initializeRoom () {
         // generate monster()
         monster = new Monster(baseLevel);
-
+		monsterAlive = true;
         // does this room drop a key?
         // might need to adjust odds later
         // maybe ask player what odds/difficulty level?
         Random rand1 = new Random();
 
-        if (rand1.nextInt(101) < 33 ) {
+        if (rand1.nextInt(101) < 25 ) {
             roomKey = true;
         }
         else {
             roomKey = false;
         }
+		System.out.println("Room key: " + roomKey);
     }
-        
+	
+    public void mainTurnLoop () {
+		while (playerAlive) {
+			// initialize room
+			initializeRoom();
+		
+			// inner turn loop
+			innerTurnLoop();
+		
+			// check if alive
+			// else get key
+			if (roomKey) {
+				player.keys++;
+			}
+			// end of game() or go to next room()
+			if (player.keys >= 3) {
+				endGame(true); 
+			}
+		}
+		// end game here, but use if for win/lose??
+	}        
     
-    // get/process user decision
-        // options based on stats
-
-    // evaluate consequences
-        // results based on stats comparisons & random modifiers
-
-    // end of turn
-        // check if alive
-        // if still fighting monster 
-        // else get key
-        // end of game() or go to next room()
-
-    // next room
-        // ask what room next
-        // initialize room()
-
+	public void innerTurnLoop () {
+		// while player && monster alive 
+		while (playerAlive && monsterAlive) {
+			// if player not alive
+			if (player.hitPoints < 0) {
+				playerAlive = false;
+			}
+			else {
+				// get player action
+			
+				// evaluate player action 
+			}
+			
+			// if monster not alive
+			if (monster.hitPoints < 0) {
+				monsterAlive = false;
+			}
+			else {
+				// evaluate & display monster action
+			}
+		}	
+	}
+    
     // end of game
-        // if end of turn() && has 3 keys
-        // big boss? win?
-
+	public void endGame (Boolean winArg) {
+        if (winArg) {
+			// big boss? win message?
+			System.out.println("You are victorious!!");
+		}
+		else {
+			System.out.println("Sad trombone sound. You lose.");
+		}
+	}
 } // close class

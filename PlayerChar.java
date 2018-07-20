@@ -12,7 +12,7 @@ public class PlayerChar {
         Random randObj = new Random();
         //int rand1 = randObj.nextInt(baseLvl);
 
-        hitPoints = 10 * randObj.nextInt(baseLvl);
+        hitPoints = 10 + (baseLvl * randObj.nextInt(baseLvl));
         charisma = 10 + randObj.nextInt(baseLvl);
         intelligence = 10 + randObj.nextInt(baseLvl);
         dexterity = 10 + randObj.nextInt(baseLvl);
