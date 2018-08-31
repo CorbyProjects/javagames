@@ -46,6 +46,23 @@ public class Games {
             else if (game.equals("3") || game.equals("mazes and monsters")) {
                 MnM currentGame = new MnM();
             }
+			else if (game.equals("4") || game.equals("2d tic tac toe")) {
+                2DTicTacToe currentGame = new 2DTicTacToe();
+				boolean keepPlaying = true;
+                while (keepPlaying) {
+                    // get user response
+                    currentGame.userResponse();
+                    // get computer response
+                    currentGame.compResponse();
+                    // draw board
+                    currentGame.drawBoard();
+                    // check winners
+                    // if winner or tie, set keepPlaying to false
+                    if (currentGame.checkWinner() || currentGame.isBoardFull()) {
+                        keepPlaying = false;
+                    }
+                }
+            }
             else { // otherwise let them know it doesn't exist yet
                 System.out.println("Sorry we don't have that game right now");
             }

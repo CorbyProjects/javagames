@@ -11,6 +11,9 @@ public class MnM {
 
     public MnM () {
         System.out.println("******************************************************************************************\n    __  ___                         ___        __  ___                 __                \n   /  |/  /___ _____  ___  _____   ( _ )      /  |/  /___  ____  _____/ /____  __________\n  / /|_/ / __ `/_  / / _ \\/ ___/  / __ \\/|   / /|_/ / __ \\/ __ \\/ ___/ __/ _ \\/ ___/ ___/\n / /  / / /_/ / / /_/  __(__  )  / /_/  <   / /  / / /_/ / / / (__  ) /_/  __/ /  (__  ) \n/_/  /_/\\__,_/ /___/\\___/____/   \\____/\\/  /_/  /_/\\____/_/ /_/____/\\__/\\___/_/  /____/  \n******************************************************************************************");
+		
+		System.out.println("******************************************************************************************\n    ____           __                  __  _                 \n   /  _/___  _____/ /________  _______/ /_(_)___  ____  _____\n   / // __ \\/ ___/ __/ ___/ / / / ___/ __/ / __ \\/ __ \\/ ___/\n _/ // / / (__  ) /_/ /  / /_/ / /__/ /_/ / /_/ / / / (__  ) \n/___/_/ /_/____/\\__/_/   \\__,_/\\___/\\__/_/\\____/_/ /_/____/  \n******************************************************************************************\n1. You choose a level, which is used to set your & monster stats, and key drop rate.\n2. Collect 3 keys to win & survive the maze.\n3. Defeat the monsters or die!\n4. When fighting:\n   a. Whoever has the highest number for the matching stats wins that round.\n   b. So if you have an Int that is higher than the monster's Int, you would want to fight using that stat.\n   c. Con (constitution) mitigates damage for you and the monster, but only a little bit.\n5. After you defeat a monster, you'll be notified if you found a key, and your health is always restored back to its original value.6. Best of luck, adventurer!");
+		
 		// you start off alive 
 		playerAlive = true;
         // figure out base level for game()
